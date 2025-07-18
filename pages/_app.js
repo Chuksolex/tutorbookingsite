@@ -1,5 +1,7 @@
 // pages/_app.js
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css'; // <-- This line is required
+
 import "@/styles/globals.css";
 import Header from '../components/Header';
 import Footer from "@/components/Footer";

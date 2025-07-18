@@ -1,44 +1,110 @@
 import Link from "next/link";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const categories = [
-  { subject: "english", country: "nigeria", image: "/tutor5.jpg" },
-  { subject: "maths", country: "united-states", image: "/tutor3.jpg" },
-  { subject: "physics", country: "canada", image: "/tutor8.jpg" },
-  { subject: "chemistry", country: "ghana", image: "/tutor1.jpg" },
-  { subject: "biology", country: "kenya", image: "/tutor6.jpg" },
-  { subject: "computer-science", country: "india", image: "/tutor7.jpg" },
-  { subject: "french", country: "france", image: "/tutor6.jpg" },
-  { subject: "chinese", country: "china", image: "/tutor8.jpg" },
-  { subject: "music", country: "nigeria", image: "/tutor3.jpg" },
-  { subject: "economics", country: "uk", image: "/tutor4.jpg" },
-  { subject: "geography", country: "south-africa", image: "/tutor2.jpg" },
-  { subject: "history", country: "egypt", image: "/tutor1.jpg" },
-  { subject: "literature", country: "australia", image: "/tutor5.jpg" },
-  { subject: "accounting", country: "nigeria", image: "/tutor3.jpg" },
-  { subject: "law", country: "usa", image: "/tutor8.jpg" },
-  { subject: "medicine", country: "uk", image: "/tutor2.jpg" },
-  { subject: "dance", country: "ghana", image: "/tutor1.jpg" },
-  { subject: "sports", country: "nigeria", image: "/tutor5.jpg" },
-  { subject: "agriculture", country: "kenya", image: "/tutor6.jpg" },
-  { subject: "philosophy", country: "italy", image: "/tutor8.jpg" },
-    
-  // ✅ IELTS added
-  { subject: "ielts", country: "nigeria", image: "/tutor8.jpg" },
+  { subject: "english", image: "/tutor5.jpg" },
+  { subject: "maths", image: "/tutor3.jpg" },
+  { subject: "physics", image: "/tutor8.jpg" },
+  { subject: "chemistry", image: "/tutor1.jpg" },
+  { subject: "biology", image: "/tutor6.jpg" },
+  { subject: "computer-science", image: "/tutor7.jpg" },
+  { subject: "french", image: "/tutor6.jpg" },
+  { subject: "chinese", image: "/tutor8.jpg" },
+  { subject: "music", image: "/tutor3.jpg" },
+  { subject: "economics", image: "/tutor4.jpg" },
+  { subject: "geography", image: "/tutor2.jpg" },
+  { subject: "history", image: "/tutor1.jpg" },
+  { subject: "literature", image: "/tutor5.jpg" },
+  { subject: "accounting", image: "/tutor3.jpg" },
+  { subject: "law", image: "/tutor8.jpg" },
+  { subject: "medicine", image: "/tutor2.jpg" },
+  { subject: "dance", image: "/tutor1.jpg" },
+  { subject: "sports", image: "/tutor5.jpg" },
+  { subject: "agriculture", image: "/tutor6.jpg" },
+  { subject: "philosophy", image: "/tutor8.jpg" },
+  { subject: "ielts", image: "/tutor8.jpg" },
+];
+
+const availableCountries = [
+  { name: "nigeria", flag: "🇳🇬" },
+  { name: "ghana", flag: "🇬🇭" },
+  { name: "kenya", flag: "🇰🇪" },
+  { name: "united-states", flag: "🇺🇸" },
+  { name: "canada", flag: "🇨🇦" },
+  { name: "uk", flag: "🇬🇧" },
+  { name: "france", flag: "🇫🇷" },
+  { name: "germany", flag: "🇩🇪" },
+  { name: "india", flag: "🇮🇳" },
+  { name: "china", flag: "🇨🇳" },
+  { name: "australia", flag: "🇦🇺" },
 ];
 
 const TutorialCategoriesSlider = () => {
+  const [userCountry, setUserCountry] = useState("");
+  const [loadingCountry, setLoadingCountry] = useState(true);
+
+  useEffect(() => {
+    // Check local storage first
+    const savedCountry = localStorage.getItem("selectedCountry");
+    if (savedCountry) {
+      setUserCountry(savedCountry);
+      setLoadingCountry(false);
+      return;
+    }
+
+    // Otherwise, fetch from IP API
+    fetch("https://ipapi.co/json/")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.country_name) {
+          const formatted = data.country_name.toLowerCase().replace(/\s+/g, "-");
+          setUserCountry(formatted);
+          localStorage.setItem("selectedCountry", formatted);
+        } else {
+          setUserCountry("nigeria");
+        }
+      })
+      .catch(() => {
+        setUserCountry("nigeria");
+      })
+      .finally(() => setLoadingCountry(false));
+  }, []);
+
+  const handleCountryChange = (e) => {
+    setUserCountry(e.target.value);
+    localStorage.setItem("selectedCountry", e.target.value);
+  };
+
   return (
     <div className="container my-4">
-      <h3 className="mb-3 text-center fs-2">Explore Tutorials:</h3>
+      <h3 className="mb-2 text-center fs-2">Explore Tutorials:</h3>
+
+      <div className="text-center mb-3">
+        {loadingCountry ? (
+          <p>🌎 Loading country...</p>
+        ) : (
+          <select
+            value={userCountry}
+            onChange={handleCountryChange}
+            className="form-select w-auto d-inline-block"
+          >
+            {availableCountries.map((country) => (
+              <option key={country.name} value={country.name}>
+                {country.flag} {country.name.replace("-", " ").toUpperCase()}
+              </option>
+            ))}
+          </select>
+        )}
+      </div>
+
       <div
         className="d-flex overflow-auto pb-3"
         style={{ gap: "1rem", whiteSpace: "nowrap" }}
       >
         {categories.map((cat, index) => (
           <Link
-            href={`/tutorials/${cat.subject}/${cat.country}`}
+            href={`/tutorials/${cat.subject}/${userCountry}`}
             key={index}
             className="text-decoration-none"
           >
@@ -57,7 +123,7 @@ const TutorialCategoriesSlider = () => {
                 <h6 className="mb-0" style={{ fontSize: "0.9rem" }}>
                   {cat.subject.replace("-", " ").toUpperCase()}
                 </h6>
-                <small className="text-muted">{cat.country}</small>
+                <small className="text-muted">{userCountry}</small>
               </div>
             </div>
           </Link>

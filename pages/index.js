@@ -1,13 +1,30 @@
+import { useEffect, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import TutorsSection from "@/components/TutorsSection";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import TutorialCategoriesSlider from "@/components/TutorialCategoriesSlider"
+import TutorialCategoriesSlider from "@/components/TutorialCategoriesSlider";
+import FeaturedTutorials from "@/components/FeaturedTutorials";
+import ReviewsSection from "@/components/ReviewsSection";
+
+
 
 
 
 export default function Home() {
+  const [userCountry, setUserCountry] = useState("");
+
+  useEffect(() => {
+    // Only runs in browser
+    const savedCountry = localStorage.getItem("selectedCountry");
+    if (savedCountry) {
+      setUserCountry(savedCountry);
+    } else {
+      setUserCountry("nigeria"); // fallback default
+    }
+  }, []);
+
   return (
     <>
       <Head>
@@ -28,15 +45,15 @@ export default function Home() {
           to share your knowledge, you've come to the right place.
         </p>
 
-        {/* card for fins tutors and become tutors */}
+        {/* card for find tutors and become tutors */}
 
-        <div className="section d-lg-flex justify-content-around ">
-          <div className="firstCol bg-light">
-            <div className="bg-warning p-2">
+        <div className="section d-lg-flex justify-content-around mb-4">
+          <div className="firstCol cardbg">
+            <div className="bg-dark p-2">
               <h2 className="text-light">Find Pro Tutors </h2>
             </div>
 
-            <div className="row">
+            <div className="row p-4">
               <Image
                 className="col-lg-6"
                 src="/findtutorimg.jpg"
@@ -45,7 +62,7 @@ export default function Home() {
                 alt="child taking a class"
               />
 
-              <div className="col-lg-6 p-2 ">
+              <div className="col-lg-6 p-4 ">
                 <p>Find Pro Tutors</p>
                 <p>Hundreds of Pro Tutors</p>
                 <p>Free Registration</p>
@@ -54,11 +71,11 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="secondCol bg-light">
-            <div className="bg-warning p-2">
+          <div className="secondCol cardbg">
+            <div className="bg-dark p-2">
               <h2 className="text-light">Become A Tutor</h2>
             </div>
-            <div className="row m-2">
+            <div className="row p-4">
               <Image
                 className="col-lg-6"
                 src="/becometuturimage.jpg"
@@ -119,6 +136,11 @@ export default function Home() {
         {/* Tutors Section */}
 
         <TutorsSection />
+        <ReviewsSection />
+
+
+        <FeaturedTutorials userCountry={userCountry} />
+
 
 
 
