@@ -14,7 +14,9 @@ export default function Footer() {
        <footer class="py-5"> 
        <div class="row ">
         <div class="col-6 col-md-2 mb-3"> 
-           <h5>About</h5> 
+           <h5 className='fw-bold'>About</h5> 
+            <hr className='w-50 border-warning border-2'/>
+
            <ul class="nav flex-column"> 
               <li class="nav-item mb-2"><a href="/about-us" class="nav-link p-0 text-body-secondary">Who are we?</a></li> 
               <li class="nav-item mb-2"><a href="/terms-and-conditions" class="nav-link p-0 text-body-secondary">Terms & Conditions</a></li> 
@@ -32,7 +34,9 @@ export default function Footer() {
            </ul> 
           </div>
           <div class="col-6 col-md-2 mb-3"> 
-            <h5>Subjects </h5> 
+           <h5 className='fw-bold'>Subjects </h5> 
+           <hr className='w-50 border-warning border-2'/>
+
             <ul class="nav flex-column">
                <li class="nav-item mb-2"><a href="/type-of-tutorial/arts-and-hobbies" class="nav-link p-0 text-body-secondary">Arts & Hobbies</a></li>
                 <li class="nav-item mb-2"><a href="/type-of-tutorial/career-development" class="nav-link p-0 text-body-secondary">Career-Development</a></li>
@@ -51,7 +55,8 @@ export default function Footer() {
             </ul> 
           </div> 
           <div class="col-6 col-md-2 mb-3"> 
-            <h5>Share Point</h5> 
+            <h5 className='fw-bold'>Share Point</h5> 
+            <hr className='w-50 border-warning border-2'/>
             <ul class="nav flex-column">
                <li class="nav-item mb-2"><a href="/bog" class="nav-link p-0 text-body-secondary">Baza Academy Blog</a></li> 
                <li class="nav-item mb-2"><a href="/teaching-resources" class="nav-link p-0 text-body-secondary">Teaching Resources</a></li>
@@ -59,8 +64,10 @@ export default function Footer() {
                 <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
             </ul> 
             </div> 
-            <div class="col-md-5 offset-md-1 mb-3"> 
-              <h5>Baza Academy</h5>
+            <div class="col-md-5 offset-md-1 mb-3 border border-2 border-warning"> 
+              <h5 className='fw-bold'>Baza Academy</h5>
+              <hr className='w-25 border-warning border-2'/>
+
               <p>Your trusted partner for tutorial connects.</p>
               <p>Baxa Academy is a dynamic educational platform dedicated to connecting passionate tutors with eager learners from all walks of life. We believe that personalized learning has the power to transform lives, which is why we make it easy for students to find skilled, trusted tutors who match their specific goals and interests. </p>
                 <p>Whether you're looking to master a new language, improve your academic performance, or develop valuable career skills, Baxa Academy offers a seamless way to access high-quality instruction tailored to your needs.</p>

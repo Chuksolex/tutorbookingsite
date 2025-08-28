@@ -25,3 +25,11 @@ body {
   border-color: #d1a306;
 }
 
+/* styles/Dashboard.module.css */
+.card {
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}

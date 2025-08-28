@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars,  faTimes, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { faBars,  faTimes, faQuestionCircle, faUser, faDashboard } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 
 
@@ -62,13 +62,14 @@ export default function Navbar() {
             <Link class="nav-link" href="/contact">Contact</Link>
           </li>
            <li class="nav-item  ">
-            <Link class="nav-link " href="/sign-up"><button className='btn  btn-outline-warning '>Sign Up</button></Link>
+            <Link class="nav-link " href="/auth/login"><button className='btn  btn-outline-warning '>Login</button></Link>
           </li>
            <li class="nav-item justify-content-center  ">
-            <Link class="nav-link " href="/login"><button className='btn  btn-warning '>Sign Up</button></Link>
+            <Link class="nav-link " href="/auth/signup"><button className='btn  btn-warning '>Sign Up</button></Link>
           </li>
         </ul>
-       <li><Link class="mt-2" href="/help"> <FontAwesomeIcon icon={faQuestionCircle} className="fa-2xl	text-warning" /></Link></li>
+        
+        <Link class="mt-2" href="/dashboard"> <FontAwesomeIcon icon={faDashboard} className="fa-2xl	text-warning" /></Link>
         
       </div>
     </div>

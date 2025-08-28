@@ -27,6 +27,7 @@ const categories = [
 ];
 
 const availableCountries = [
+  { name: "Select Country", flag: "" },
   { name: "nigeria", flag: "🇳🇬" },
   { name: "ghana", flag: "🇬🇭" },
   { name: "kenya", flag: "🇰🇪" },

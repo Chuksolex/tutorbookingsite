@@ -1,4 +1,5 @@
 // pages/_app.js
+import { SessionProvider } from 'next-auth/react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css'; // <-- This line is required
 
@@ -13,14 +14,17 @@ export const metadata = {
   },
 }
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, session, pageProps }) {
   useEffect(() => {
     // Import only in the browser for Bootstrap's JS functionalities
     import('bootstrap/dist/js/bootstrap.bundle.min.js');
   }, []);
 
   return (
+            <SessionProvider session={session}>
+
     <>
+
       <Header />
       {/* This div will wrap ALL page content rendered by <Component />
         Apply padding-top here to push content down, clearing the sticky header.
@@ -30,6 +34,10 @@ export default function App({ Component, pageProps }) {
   <Component {...pageProps} />
 </div>
       <Footer />
+
+      <SessionProvider />
     </>
+        </SessionProvider  >
+
   );
 }
