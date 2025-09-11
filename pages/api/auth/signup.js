@@ -43,8 +43,8 @@ export default async function handler(req, res) {
 
     // Send verification email
     const transporter = await createMailTransporter();
-    console.log("EMAIL:", process.env.GMAIL_ACCOUNT);
-        console.log("app password:", process.env.GMAIL_APP_PASSWORD);
+    // console.log("EMAIL:", process.env.GMAIL_ACCOUNT);
+    //     console.log("app password:", process.env.GMAIL_APP_PASSWORD);
 
 
     await transporter.sendMail({

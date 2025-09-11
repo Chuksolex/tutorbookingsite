@@ -1,7 +1,7 @@
 // File: /pages/api/student/dashboard.js
 
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "../../api/auth/[...nextauth]"// adjust if path differs
+import { authOptions } from "../../api/auth/[...nextauth]"; // adjust if path differs
 import dbConnect from "@/lib/mongodb";
 import Session from "@/models/Session";
 import TutorProfile from "@/models/TutorProfile";
@@ -18,7 +18,9 @@ export default async function handler(req, res) {
     }
 
     if (session.user.role !== "student") {
-      return res.status(403).json({ message: "Only students can access this route" });
+      return res
+        .status(403)
+        .json({ message: "Only students can access this route" });
     }
 
     const now = new Date();
@@ -39,7 +41,8 @@ export default async function handler(req, res) {
       .populate("user", "name imageUrl");
 
     const connectedTutors = connectedTutorProfiles.map((tp) => ({
-      id: tp.user._id.toString(),
+      id: tp._id.toString(), // ✅ TutorProfile ID (not User ID)
+      userId: tp.user._id.toString(), // still keep User ID if you need it
       name: tp.user.name,
       avatar: tp.photo || tp.user.imageUrl || "",
       subjects: tp.subjects || [],
@@ -48,9 +51,9 @@ export default async function handler(req, res) {
     // Simple notifications (fake for now)
     const notifications = upcoming.map((s) => ({
       id: s._id.toString(),
-      message: `Upcoming ${s.subject} with ${s.tutor?.name || "Tutor"} at ${new Date(
-        s.startsAt
-      ).toLocaleString()}`,
+      message: `Upcoming ${s.subject} with ${
+        s.tutor?.name || "Tutor"
+      } at ${new Date(s.startsAt).toLocaleString()}`,
     }));
 
     // Send response
