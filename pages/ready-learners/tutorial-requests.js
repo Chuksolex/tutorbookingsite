@@ -5,11 +5,14 @@ import Link from "next/link";
 
 export default function CustomRequests() {
   const { data: session } = useSession();
+
   const [requests, setRequests] = useState([]);
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [message, setMessage] = useState("");
-  const [loading, setLoading] = useState(false);
   const [feedback, setFeedback] = useState("");
+  const [loadingRequests, setLoadingRequests] = useState(false);
+  const [loadingSubmit, setLoadingSubmit] = useState(false);
+  const [error, setError] = useState("");
 
   // ✅ Only premium tutors can apply
   const canApply =
@@ -19,18 +22,23 @@ export default function CustomRequests() {
   // ✅ Fetch requests from API
   useEffect(() => {
     const fetchRequests = async () => {
-         setLoading(true);
+      setLoadingRequests(true);
+      setError("");
 
       try {
         const res = await fetch("/api/student/custom-request");
+        if (!res.ok) throw new Error("Failed to fetch requests");
+
         const data = await res.json();
         setRequests(data);
       } catch (err) {
-                setLoading(false);
-
         console.error("Error fetching requests:", err);
+        setError("Unable to load requests. Please try again later.");
+      } finally {
+        setLoadingRequests(false);
       }
     };
+
     fetchRequests();
   }, []);
 
@@ -39,7 +47,7 @@ export default function CustomRequests() {
     e.preventDefault();
     if (!selectedRequest) return;
 
-    setLoading(true);
+    setLoadingSubmit(true);
     setFeedback("");
 
     try {
@@ -62,44 +70,47 @@ export default function CustomRequests() {
     } catch (err) {
       console.error(err);
       setFeedback("Something went wrong ❌");
+    } finally {
+      setLoadingSubmit(false);
     }
+  };
 
-    setLoading(false);
+  // ✅ Reset message & feedback when opening modal
+  const handleOpenModal = (req) => {
+    setSelectedRequest(req);
+    setMessage("");
+    setFeedback("");
   };
 
   return (
     <div className="container py-5">
       <h1 className="mb-4 text-center">Custom Requests</h1>
 
-      {loading && requests.length === 0 && (
-        <p className="text-center">Loading requests...</p>
-      )}
-      {requests.length === 0 && !loading && (
+      {loadingRequests && <p className="text-center">Loading requests...</p>}
+      {error && <p className="text-danger text-center">{error}</p>}
+      {!loadingRequests && requests.length === 0 && !error && (
         <p className="text-center">No custom requests available.</p>
       )}
 
       <div className="row">
-
         {requests.map((req) => (
           <div className="col-md-4 mb-4" key={req._id}>
             <div className="card shadow-sm h-100">
-              <div className="card-body">
-                <Image  
+              <div className="card-body text-center">
+                <Image
                   src={req.user?.imageUrl || "/profileimg.jpg"}
-                  alt={req.user?.name || ""}
+                  alt={req.user?.name || "Profile"}
                   className="border-2 border-warning rounded-circle mb-3"
                   width={100}
                   height={100}
                   style={{ objectFit: "cover" }}
-                  
                 />
-                <strong className="ms-4 fs-4">
+                <strong className="d-block mb-2 fs-5">
                   {req.user?.name || "Unknown"}
                 </strong>
+
                 <h5 className="card-title">{req.title}</h5>
-                <p className="card-text">
-                  Mode of Lesson: {req.modeOfLesson}
-                </p>
+                <p className="card-text">Mode of Lesson: {req.modeOfLesson}</p>
                 <p className="card-text">
                   <strong>Budget</strong>: ${req.budget}/hour
                 </p>
@@ -107,15 +118,33 @@ export default function CustomRequests() {
                   <strong>Address</strong>: {req.address}
                 </p>
                 <p className="card-text">{req.description}</p>
-                <button
-                  className="btn btn-primary"
-                  style={{ backgroundColor: "#f3a90aff", border: "none" }}
-                  data-bs-toggle="modal"
-                  data-bs-target="#applyModal"
-                  onClick={() => setSelectedRequest(req)}
-                >
-                  Apply
-                </button>
+
+                {canApply ? (
+                  <button
+                    className="btn btn-primary"
+                    style={{ backgroundColor: "#f3a90aff", border: "none" }}
+                    data-bs-toggle="modal"
+                    data-bs-target="#applyModal"
+                    onClick={() => handleOpenModal(req)}
+                  >
+                    Apply
+                  </button>
+                ) : (
+                  <div className="mt-3">
+                    {session?.user?.role === "student" ? (
+                      <Link href="/switch-role" className="btn btn-secondary">
+                        Switch to Tutor
+                      </Link>
+                    ) : (
+                      <Link
+                        href="/upgrade/membership"
+                        className="btn btn-warning"
+                      >
+                        Upgrade to Premium
+                      </Link>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -133,9 +162,7 @@ export default function CustomRequests() {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title">
-                {canApply
-                  ? `Apply for: ${selectedRequest?.title}`
-                  : "Action Required"}
+                Apply for: {selectedRequest?.title}
               </h5>
               <button
                 type="button"
@@ -146,8 +173,7 @@ export default function CustomRequests() {
             </div>
 
             <div className="modal-body">
-              {canApply ? (
-                // ✅ Premium Tutor Application Form
+              {canApply && (
                 <form onSubmit={handleApply}>
                   <div className="mb-3">
                     <label className="form-label">
@@ -162,6 +188,7 @@ export default function CustomRequests() {
                       required
                     ></textarea>
                   </div>
+
                   {feedback && (
                     <p
                       className={`fw-bold ${
@@ -173,37 +200,16 @@ export default function CustomRequests() {
                       {feedback}
                     </p>
                   )}
+
                   <button
                     type="submit"
                     className="btn btn-warning"
                     style={{ backgroundColor: "orange", border: "none" }}
-                    disabled={loading}
+                    disabled={loadingSubmit}
                   >
-                    {loading ? "Submitting..." : "Submit Application"}
+                    {loadingSubmit ? "Submitting..." : "Submit Application"}
                   </button>
                 </form>
-              ) : session?.user?.role === "student" ? (
-                // ❌ Student trying to apply
-                <div className="text-center">
-                  <p className="mb-3">
-                    You’re currently logged in as a <b>Student</b>. To apply for
-                    requests, please switch to a <b>Tutor Account</b>.
-                  </p>
-                  <Link href="/switch-role" className="btn btn-secondary">
-                    Switch to Tutor
-                  </Link>
-                </div>
-              ) : (
-                // ❌ Free Tutor trying to apply
-                <div className="text-center">
-                  <p className="mb-3">
-                    You must be a <b>Premium Tutor</b> to apply for custom
-                    requests.
-                  </p>
-                  <Link href="/upgrade/membership" className="btn btn-warning">
-                    Upgrade Now
-                  </Link>
-                </div>
               )}
             </div>
           </div>
