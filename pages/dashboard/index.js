@@ -99,7 +99,7 @@ export default function ProfilePage() {
           {user.role === "student" && (
             <Link
               href="/dashboard/student"
-              className="btn btn-outline-primary me-2"
+              className="btn btn-outline-warning me-2"
             >
               Go to Student Dashboard
             </Link>

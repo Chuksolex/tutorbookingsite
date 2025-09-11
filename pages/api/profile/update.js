@@ -16,13 +16,34 @@ export default async function handler(req, res) {
   await dbConnect();
 
   try {
-    const { name, phone, location, imageUrl } = req.body;
+    const { name, phone, location, imageUrl, role } = req.body;
 
     const user = await User.findOneAndUpdate(
-      { email: session.user.email }, // or { _id: session.user.id } if you expose id
-      { name, phone, location, imageUrl },
+      { email: session.user.email },
+      { name, phone, location, imageUrl, role },
       { new: true }
     ).select("-password");
+
+    // If user just became a tutor, ensure TutorProfile exists
+    if (role === "tutor") {
+      const TutorProfile = (await import("@/models/TutorProfile")).default;
+      const exists = await TutorProfile.findOne({ user: user._id });
+      if (!exists) {
+        await TutorProfile.create({
+          user: user._id,
+          bio: "",
+          subjects: [],
+          ratePerHour: 0,
+          photo: user.imageUrl || "",
+          qualifications: "",
+          experience: "",
+          teachesOnline: false,
+          teachesInPerson: false,
+          location: "",
+          abouttheclass: "",
+        });
+      }
+    }
 
     return res.status(200).json({ success: true, user });
   } catch (err) {

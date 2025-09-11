@@ -82,7 +82,6 @@ export default function CustomRequests() {
     setFeedback("");
   };
 
-
   const handleSwitchRole = async () => {
     try {
       const res = await fetch("/api/profile/role", {
@@ -99,7 +98,7 @@ export default function CustomRequests() {
     } catch (err) {
       console.error("Error switching role:", err);
     }
-  }
+  };
 
   return (
     <div className="container py-5">
@@ -138,35 +137,16 @@ export default function CustomRequests() {
                 </p>
                 <p className="card-text">{req.description}</p>
 
-                {canApply ? (
-                  <button
-                    className="btn btn-primary"
-                    style={{ backgroundColor: "#f3a90aff", border: "none" }}
-                    data-bs-toggle="modal"
-                    data-bs-target="#applyModal"
-                    onClick={() => handleOpenModal(req)}
-                  >
-                    Apply
-                  </button>
-                ) : (
-                  <div className="mt-3">
-                    {session?.user?.role === "student" ? (
-                      <button
-                        className="btn btn-warning"
-                        onClick={handleSwitchRole}
-                      >
-                        Switch to Tutor
-                      </button>
-                    ) : (
-                      <Link
-                        href="/upgrade/membership"
-                        className="btn btn-warning"
-                      >
-                        Upgrade to Premium
-                      </Link>
-                    )}
-                  </div>
-                )}
+                {/* ✅ Always open modal */}
+                <button
+                  className="btn btn-primary"
+                  style={{ backgroundColor: "#f3a90aff", border: "none" }}
+                  data-bs-toggle="modal"
+                  data-bs-target="#applyModal"
+                  onClick={() => handleOpenModal(req)}
+                >
+                  Apply
+                </button>
               </div>
             </div>
           </div>
@@ -195,7 +175,8 @@ export default function CustomRequests() {
             </div>
 
             <div className="modal-body">
-              {canApply && (
+              {canApply ? (
+                // ✅ Tutor with premium → show form
                 <form onSubmit={handleApply}>
                   <div className="mb-3">
                     <label className="form-label">
@@ -214,7 +195,9 @@ export default function CustomRequests() {
                   {feedback && (
                     <p
                       className={`fw-bold ${
-                        feedback.includes("✅") ? "text-success" : "text-danger"
+                        feedback.includes("✅")
+                          ? "text-success"
+                          : "text-danger"
                       }`}
                     >
                       {feedback}
@@ -230,6 +213,32 @@ export default function CustomRequests() {
                     {loadingSubmit ? "Submitting..." : "Submit Application"}
                   </button>
                 </form>
+              ) : (
+                // ❌ Not allowed → show info & button
+                <div className="text-center">
+                  {session?.user?.role === "student" ? (
+                    <>
+                      <p className="fw-bold text-danger">
+                        You must be a tutor to apply.
+                      </p>
+                      <button
+                        className="btn btn-warning"
+                        onClick={handleSwitchRole}
+                      >
+                        Switch to Tutor
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <p className="fw-bold text-danger">
+                        You must upgrade to Premium to apply.
+                      </p>
+                      <Link href="/upgrade/membership" className="btn btn-warning">
+                        Upgrade to Premium
+                      </Link>
+                    </>
+                  )}
+                </div>
               )}
             </div>
           </div>

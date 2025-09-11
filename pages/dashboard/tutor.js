@@ -364,12 +364,11 @@ export default function TutorDashboard() {
     </div>
   );
 }
-
 export async function getServerSideProps(ctx) {
   const session = await getSession(ctx);
   if (!session)
     return { redirect: { destination: "/auth/login", permanent: false } };
   if (session.user.role !== "tutor")
-    return { redirect: { destination: "/auth/profile", permanent: false } };
+    return { redirect: { destination: "/dashboard/student", permanent: false } };
   return { props: {} };
 }
