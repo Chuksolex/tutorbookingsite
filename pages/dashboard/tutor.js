@@ -114,7 +114,7 @@ export default function TutorDashboard() {
           </li>
 
           <li className="nav-item mb-2">
-            <Link className="nav-link text-white" href="#">
+            <Link className="nav-link text-white" href="/dashboard">
               Profile
             </Link>
           </li>

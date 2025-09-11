@@ -194,7 +194,7 @@ export default function CustomRequestPage() {
           >
             Cancel
           </Button>
-          <Button variant="warning" onClick={() => router.push("/pricing")}>
+          <Button variant="warning" onClick={() => router.push("/upgrade/membership")}>
             View Plans
           </Button>
         </Modal.Footer>

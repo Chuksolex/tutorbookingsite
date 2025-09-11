@@ -28,9 +28,11 @@ export default function ProfilePage() {
       {
         cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
         uploadPreset: process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET,
+        
         sources: ["local", "camera", "url"],
       },
       (error, result) => {
+
         if (!error && result.event === "success") {
           setFormData((prev) => ({
             ...prev,

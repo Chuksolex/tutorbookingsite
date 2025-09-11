@@ -21,8 +21,8 @@ export default function Footer() {
                 <li className="nav-item mb-2"><Link href="/about-us" className="nav-link p-0 text-body-secondary">Who are we?</Link></li>
                 <li className="nav-item mb-2"><Link href="/terms-and-conditions" className="nav-link p-0 text-body-secondary">Terms & Conditions</Link></li>
                 <li className="nav-item mb-2"><Link href="/privacy-policy" className="nav-link p-0 text-body-secondary">Privacy Policy</Link></li>
-                <li className="nav-item mb-2"><Link href="/baza-academy-worldwide" className="nav-link p-0 text-body-secondary">Baza Academy Worldwide</Link></li>
-                <li className="nav-item mb-2"><Link href="/online-tutorials" className="nav-link p-0 text-body-secondary">Online-Tutorials</Link></li>
+                <li className="nav-item mb-2"><Link href="/countries" className="nav-link p-0 text-body-secondary">Baza Academy Worldwide</Link></li>
+                <li className="nav-item mb-2"><Link href="/tutorials" className="nav-link p-0 text-body-secondary">Online-Tutorials</Link></li>
                 <li className="nav-item mb-2"><Link href="/states" className="nav-link p-0 text-body-secondary">States</Link></li>
                 <li className="nav-item mb-2"><Link href="/careers" className="nav-link p-0 text-body-secondary">Baza Academy Careers</Link></li>
               </ul>
@@ -49,7 +49,7 @@ export default function Footer() {
               <ul className="nav flex-column">
                 <li className="nav-item mb-2"><Link href="/bog" className="nav-link p-0 text-body-secondary">Baza Academy Blog</Link></li>
                 <li className="nav-item mb-2"><Link href="/teaching-resources" className="nav-link p-0 text-body-secondary">Teaching Resources</Link></li>
-                <li className="nav-item mb-2"><Link href="/pricing" className="nav-link p-0 text-body-secondary">Pricing</Link></li>
+                <li className="nav-item mb-2"><Link href="/upgrade/membership" className="nav-link p-0 text-body-secondary">Pricing</Link></li>
                 <li className="nav-item mb-2"><Link href="/faqs" className="nav-link p-0 text-body-secondary">FAQs</Link></li>
                 <li className="nav-item mb-2"><Link href="/ready-learners/custom-request" className="nav-link p-0 text-body-secondary">Create Request</Link></li>
               </ul>

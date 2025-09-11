@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function CustomRequests() {
-  const { data: session } = useSession();
+  const { data: session, update } = useSession();
 
   const [requests, setRequests] = useState([]);
   const [selectedRequest, setSelectedRequest] = useState(null);
@@ -82,6 +82,25 @@ export default function CustomRequests() {
     setFeedback("");
   };
 
+
+  const handleSwitchRole = async () => {
+    try {
+      const res = await fetch("/api/profile/role", {
+        method: "POST",
+      });
+      const data = await res.json();
+
+      if (res.ok) {
+        // ✅ Update session with full user + tutor details
+        await update({ user: data.user });
+      } else {
+        alert(data.message || "Could not switch role.");
+      }
+    } catch (err) {
+      console.error("Error switching role:", err);
+    }
+  }
+
   return (
     <div className="container py-5">
       <h1 className="mb-4 text-center">Custom Requests</h1>
@@ -132,9 +151,12 @@ export default function CustomRequests() {
                 ) : (
                   <div className="mt-3">
                     {session?.user?.role === "student" ? (
-                      <Link href="/switch-role" className="btn btn-secondary">
+                      <button
+                        className="btn btn-warning"
+                        onClick={handleSwitchRole}
+                      >
                         Switch to Tutor
-                      </Link>
+                      </button>
                     ) : (
                       <Link
                         href="/upgrade/membership"
@@ -192,9 +214,7 @@ export default function CustomRequests() {
                   {feedback && (
                     <p
                       className={`fw-bold ${
-                        feedback.includes("✅")
-                          ? "text-success"
-                          : "text-danger"
+                        feedback.includes("✅") ? "text-success" : "text-danger"
                       }`}
                     >
                       {feedback}
