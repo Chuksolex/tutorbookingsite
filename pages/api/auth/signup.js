@@ -44,7 +44,7 @@ export default async function handler(req, res) {
     // Send verification email
     const transporter = await createMailTransporter();
     await transporter.sendMail({
-      from: `"${process.env.Company_Name}" <${process.env.GMAIL_ACCOUNT}>`,
+      from: `"${process.env.COMPANY_NAME}" <${process.env.GMAIL_ACCOUNT}>`,
       to: email,
       subject: "Email Verification",
       html: `
