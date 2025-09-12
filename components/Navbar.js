@@ -61,19 +61,20 @@ export default function Navbar() {
                   Search Tutors
                 </span>
                 <ul className="dropdown-menu">
-                  <li>
+                  <li className="m-2">
                     <Link className="dropdown-item" href="/countries">
                       Search Tutors By Location
                     </Link>
                   </li>
-                  <li>
+                      <li>
+                    <hr className="dropdown-divider" />
+                  </li>
+                  <li className="m-2">
                     <Link className="dropdown-item" href="/tutorials">
                       Explore Tutorials
                     </Link>
                   </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
+              
                 </ul>
               </li>
 
@@ -101,7 +102,7 @@ export default function Navbar() {
                     <hr className="dropdown-divider" />
                   </li>
                   <li>
-                    <Link className="dropdown-item" href="/pricing">
+                    <Link className="dropdown-item" href="/upgrade/membership">
                       Pricing
                     </Link>
                   </li>
@@ -109,7 +110,7 @@ export default function Navbar() {
               </li>
 
               <li className="nav-item mt-2">
-                <Link className="nav-link active" href="/contact">
+                <Link className="nav-link active" href="/contact-us">
                   Contact
                 </Link>
               </li>
