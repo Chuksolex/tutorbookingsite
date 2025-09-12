@@ -124,7 +124,7 @@ export default function CustomRequests() {
                   style={{ objectFit: "cover" }}
                 />
                 <strong className="d-block mb-2 fs-5">
-                  {req.user?.name || "Unknown"}
+                  {req.user?.name || "Unknown name"}
                 </strong>
 
                 <h5 className="card-title">{req.title}</h5>

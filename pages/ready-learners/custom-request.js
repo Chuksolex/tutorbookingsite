@@ -34,7 +34,7 @@ export default function CustomRequestPage() {
       const res = await fetch("/api/student/custom-request", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title, description, modeOfLesson, address }),
+        body: JSON.stringify({ title, description, modeOfLesson, address, budget }),
         credentials: "include", // ✅ ensures session cookies are sent
       });
 
