@@ -35,7 +35,7 @@ const TutorCard = ({
 
         <div className="d-flex justify-content-between align-items-center mb-1">
           <h5 className="card-title mb-0">{title}</h5>
-          <span className="text-success fw-bold">{ratePerHour} ₦/hr</span>
+          <span className="text-success fw-bold">{ratePerHour} $/hr</span>
         </div>
 
         {/* Location + Availability */}
