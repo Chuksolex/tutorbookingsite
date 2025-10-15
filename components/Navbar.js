@@ -13,7 +13,7 @@ export default function Navbar() {
     <nav className="container navbar bg-body-light navbar-expand-lg">
       <div className="container-fluid">
         <Link href="/" className="navbar-brand text-decoration-none">
-          <Image src="/prettygigslogo.png" alt="logo of the website" width={120} height={120} />
+          <Image src="/prettygigslogo.png" alt="logo of the website" width={60} height={120} />
         </Link>
 
         {/* Login button (visible on mobile only when not logged in) */}
