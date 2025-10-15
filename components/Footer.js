@@ -21,10 +21,10 @@ export default function Footer() {
                 <li className="nav-item mb-2"><Link href="/about-us" className="nav-link p-0 text-body-secondary">Who are we?</Link></li>
                 <li className="nav-item mb-2"><Link href="/terms-and-conditions" className="nav-link p-0 text-body-secondary">Terms & Conditions</Link></li>
                 <li className="nav-item mb-2"><Link href="/privacy-policy" className="nav-link p-0 text-body-secondary">Privacy Policy</Link></li>
-                <li className="nav-item mb-2"><Link href="/countries" className="nav-link p-0 text-body-secondary">Baza Academy Worldwide</Link></li>
+                <li className="nav-item mb-2"><Link href="/countries" className="nav-link p-0 text-body-secondary">Prettygigs Hub Worldwide</Link></li>
                 <li className="nav-item mb-2"><Link href="/tutorials" className="nav-link p-0 text-body-secondary">Online-Tutorials</Link></li>
                 <li className="nav-item mb-2"><Link href="/states" className="nav-link p-0 text-body-secondary">States</Link></li>
-                <li className="nav-item mb-2"><Link href="/careers" className="nav-link p-0 text-body-secondary">Baza Academy Careers</Link></li>
+                <li className="nav-item mb-2"><Link href="/careers" className="nav-link p-0 text-body-secondary">Prettygigs Hub Careers</Link></li>
               </ul>
             </div>
             <div className="col-6 col-md-2 mb-3">
@@ -47,7 +47,7 @@ export default function Footer() {
               <h5 className='fw-bold'>Share Point</h5>
               <hr className='w-50 border-warning border-2' />
               <ul className="nav flex-column">
-                <li className="nav-item mb-2"><Link href="/bog" className="nav-link p-0 text-body-secondary">Baza Academy Blog</Link></li>
+                <li className="nav-item mb-2"><Link href="/blog" className="nav-link p-0 text-body-secondary">Prettygigs Blog</Link></li>
                 <li className="nav-item mb-2"><Link href="/teaching-resources" className="nav-link p-0 text-body-secondary">Teaching Resources</Link></li>
                 <li className="nav-item mb-2"><Link href="/upgrade/membership" className="nav-link p-0 text-body-secondary">Pricing</Link></li>
                 <li className="nav-item mb-2"><Link href="/faqs" className="nav-link p-0 text-body-secondary">FAQs</Link></li>
@@ -55,7 +55,7 @@ export default function Footer() {
               </ul>
             </div>
             <div className="col-md-5 offset-md-1 mb-3 border border-2 border-warning">
-              <h5 className='fw-bold'>Baza Academy</h5>
+              <h5 className='fw-bold'>Prettygigs Hub</h5>
               <hr className='w-25 border-warning border-1' />
 
               <p>Your trusted partner for tutorial connects.</p>
@@ -67,7 +67,7 @@ export default function Footer() {
 
             {/* Copyright text - text-center on xs, text-start on sm and up */}
             <p className="text-center text-sm-start mb-2 mb-sm-0">
-              {new Date().getFullYear()} Baza Academy, Inc. All rights reserved.
+              {new Date().getFullYear()} Prettygigs Hub Ltd. All rights reserved.
             </p>
 
             {/* Social Media Icons - d-flex for horizontal, mb-2 on xs before the image */}
@@ -88,7 +88,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li className="ms-3">
-                <Link className="link-body-emphasis" href="#" aria-label="WhatsApp">
+                <Link className="link-body-emphasis" href="https://wa.me/+2348064762882" aria-label="WhatsApp">
                   <FontAwesomeIcon icon={faWhatsapp} size="2xl" className='text-success' />
                 </Link>
               </li>
@@ -98,7 +98,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li className="ms-3">
-                <Link className="link-body-emphasis" href="https://www.facebook.com/people/Baza-Academy/100066410817001/" aria-label="Facebook">
+                <Link className="link-body-emphasis" href="https://www.facebook.com/p/Prettygigs-Hub-100064187525664/" aria-label="Facebook">
                   <FontAwesomeIcon icon={faFacebook} className="text-primary" size="2xl" />
                 </Link>
               </li>

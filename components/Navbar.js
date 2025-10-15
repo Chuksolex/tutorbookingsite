@@ -14,7 +14,7 @@ export default function Navbar() {
       <div className="container-fluid">
         <Link href="/" className="navbar-brand text-decoration-none">
           <Image src="/prettygigslogo.png" alt="logo of the website" width={60} height={120} />
-          <span className="h4 align-middle text-warning">Prettygigs Hub</span>
+          <span className="h4 align-middle text-warning fw-bold">Prettygigs Hub</span>
           
         </Link>
 
