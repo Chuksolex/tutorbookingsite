@@ -14,6 +14,8 @@ export default function Navbar() {
       <div className="container-fluid">
         <Link href="/" className="navbar-brand text-decoration-none">
           <Image src="/prettygigslogo.png" alt="logo of the website" width={60} height={120} />
+          <span className="h4 align-middle text-warning">Prettygigs Hub</span>
+          
         </Link>
 
         {/* Login button (visible on mobile only when not logged in) */}
@@ -37,7 +39,7 @@ export default function Navbar() {
         <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
           <div className="offcanvas-header">
             <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
-              Baza Academy
+              Prettygigs Hub: Your Learning & Teaching Partner
             </h5>
             <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
