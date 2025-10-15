@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
+import * as gtag from "@/lib/gtag";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 

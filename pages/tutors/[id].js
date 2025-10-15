@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Head from "next/head";
+import * as gtag from "@/lib/gtag";
 
 const TutorProfile = () => {
   const router = useRouter();
@@ -111,7 +112,13 @@ const TutorProfile = () => {
                     message,
                   }),
                 });
-
+                //  track contact tutor event
+                gtag.event({
+                  action: 'contact_tutor',
+                  category: 'TutorProfile',
+                  label: `User contacted tutor ${tutor.user._id}`,
+                  value: 1,
+                });
                 if (res.ok) {
                   alert(
                     "Request sent! Tutor must accept before you can exchange contacts."
@@ -120,6 +127,7 @@ const TutorProfile = () => {
                   const err = await res.json();
                   alert(err.message || "Failed to send request");
                 }
+              
               }}
             >
               Contact Tutor

@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
+import * as gtag from "@/lib/gtag";
 
 export default function RequestsPanel({ role }) {
   const { data: session } = useSession();
@@ -33,6 +34,12 @@ export default function RequestsPanel({ role }) {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status }),
+      });
+      gtag.event({
+        action: 'update_on_Learning_request',
+        category: 'RequestsPanel',
+        label: `Request ${id} updated to ${status}`,
+        value: 1,
       });
       // refresh list after update
       const res = await fetch("/api/tutor/booking/request");

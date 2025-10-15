@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
+import * as gtag from "@/lib/gtag";
 
 export default function MembershipSuccess() {
   const router = useRouter();
@@ -16,6 +17,13 @@ export default function MembershipSuccess() {
 
         if (res.ok) {
           console.log("✅ Membership upgraded successfully");
+          
+          gtag.event({
+            action: 'membership_upgraded',
+            category: 'Membership',
+            label: 'User upgraded to premium membership',
+            value: 1,
+          });
 
           // 🔄 Refresh NextAuth session so it reflects `premium` immediately
           await update();

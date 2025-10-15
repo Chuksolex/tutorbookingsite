@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { Modal, Button, Form, Spinner } from "react-bootstrap";
+import * as gtag from "@/lib/gtag";
 
 export default function CustomRequestPage() {
   const { data: session, status } = useSession();
@@ -38,11 +39,20 @@ export default function CustomRequestPage() {
         credentials: "include", // ✅ ensures session cookies are sent
       });
 
+      // Track custom request submission
+      gtag.event({
+        action: 'submit_custom_request_from_student',
+        category: 'CustomRequest',
+        label: 'Student submitted a custom request',
+        value: 1,
+      });
+
       // ✅ Fixed: correctly check both 401 and 404
       if (res.status === 401 || res.status === 404) {
         setShowLoginModal(true);
         setLoading(false);
         return;
+
       }
 
       if (res.status === 403) {
@@ -61,6 +71,14 @@ export default function CustomRequestPage() {
     } catch (err) {
       console.error(err);
       alert("❌ Error submitting request");
+      // Track error event
+      gtag.event({
+        action: 'submit_custom_request_error',
+        category: 'CustomRequest',
+        label: 'Student failed to submit a custom request',
+        value: 1,
+      });
+
     } finally {
       setLoading(false);
     }
