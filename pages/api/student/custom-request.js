@@ -86,7 +86,7 @@ export default async function handler(req, res) {
         const transporter = await createMailTransporter();
 
         await transporter.sendMail({
-          from: `"Baza Academy" <${process.env.GMAIL_ACCOUNT}>`,
+          from: `"${process.env.COMPANY_NAME}" <${process.env.PROFESSIONAL_EMAIL}>`,
           to: request.user.email,
           subject: "A tutor has responded to your custom request",
           html: `

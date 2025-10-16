@@ -16,7 +16,7 @@ import TutorBookingRequest from "@/models/tutorBookingRequest";
 async function sendEmail(to, subject, html) {
   const transporter = await createMailTransporter();
   await transporter.sendMail({
-    from: `"Baza Academy" <${process.env.GMAIL_ACCOUNT}>`,
+    from: `"${process.env.COMPANY_NAME}" <${process.env.PROFESSIONAL_EMAIL}>`,
     to,
     subject,
     html,
