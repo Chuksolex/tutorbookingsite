@@ -1,3 +1,4 @@
+// pages/upgrade/cancel.js
 import Head from "next/head";
 import { useRouter } from "next/router";
 
@@ -7,7 +8,7 @@ export default function MembershipCancel() {
   return (
     <>
       <Head>
-        <title>Membership Upgrade Cancelled | Baza Academy</title>
+        <title>Membership Upgrade Cancelled | {process.env.NEXT_PUBLIC_COMPANY_NAME}</title>
       </Head>
 
       <div className="container py-5 text-center">

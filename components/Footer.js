@@ -50,17 +50,20 @@ export default function Footer() {
                 <li className="nav-item mb-2"><Link href="/blog" className="nav-link p-0 text-body-secondary">Prettygigs Blog</Link></li>
                 <li className="nav-item mb-2"><Link href="/teaching-resources" className="nav-link p-0 text-body-secondary">Teaching Resources</Link></li>
                 <li className="nav-item mb-2"><Link href="/upgrade/membership" className="nav-link p-0 text-body-secondary">Pricing</Link></li>
+                <li className="nav-item mb-2"><Link href="/payment-method" className="nav-link p-0 text-body-secondary">Payment Methods</Link></li>
                 <li className="nav-item mb-2"><Link href="/faqs" className="nav-link p-0 text-body-secondary">FAQs</Link></li>
                 <li className="nav-item mb-2"><Link href="/ready-learners/custom-request" className="nav-link p-0 text-body-secondary">Create Request</Link></li>
               </ul>
             </div>
-            <div className="col-md-5 offset-md-1 mb-3 border border-2 border-warning">
+            <div className="col-md-5 offset-md-1 mb-3">
               <h5 className='fw-bold'>Prettygigs Hub</h5>
               <hr className='w-25 border-warning border-1' />
 
-              <p>Your trusted partner for tutorial connects.</p>
-              <p>Baxa Academy is a dynamic educational platform dedicated to connecting passionate tutors with eager learners from all walks of life. We believe that personalized learning has the power to transform lives, which is why we make it easy for students to find skilled, trusted tutors who match their specific goals and interests. </p>
-              <p>Whether you are looking to master a new language, improve your academic performance, or develop valuable career skills, Baxa Academy offers a seamless way to access high-quality instruction tailored to your needs.</p>
+              <h6>Your trusted partner for tutorial connections.</h6>
+
+              <p>Prettygigs Hub is a dynamic platform that links passionate tutors with eager learners. We believe personalized learning transforms lives, so we make it easy to find skilled, trusted tutors who match each learner’s goals.</p>
+
+              <p>From mastering a new language to boosting academic performance or career skills, Prettygigs Hub offers seamless access to quality, tailored instruction.</p>
             </div>
           </div>
           <div className="d-flex flex-column flex-sm-row justify-content-between align-items-center py-4 my-4 border-top">
@@ -105,7 +108,7 @@ export default function Footer() {
             </ul>
 
             {/* Payment Image - No bottom margin on sm and up as it's in a row */}
-            <Image src='/securepayment.jpeg' width={150} height={60} alt='Secure Payment' />
+            <Image src='/paystack-payment.png' width={200} height={80} alt='Secure Payment: paystack inlinejs' />
           </div>
         </footer>
       </div>
