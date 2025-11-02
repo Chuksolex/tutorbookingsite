@@ -2,7 +2,7 @@ export default async function handler(req, res) {
   const { reference } = req.query;
   try {
     const verifyRes = await fetch(`https://api.paystack.co/transaction/verify/${reference}`, {
-      headers: { Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}` }
+      headers: { Authorization: `Bearer ${process.env.PAYSTACK_LIVE_SECRET_KEY}` }
     });
     const data = await verifyRes.json();
 
