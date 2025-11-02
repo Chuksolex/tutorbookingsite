@@ -90,7 +90,7 @@ export default function PaymentMethodPage() {
           <div className="mt-4">
             <Link
               href="/upgrade/membership"
-              className="inline-block px-5 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+              className="inline-block px-5 py-2 bg bg-warning text-white rounded hover:bg-success"
             >
               Upgrade with card payment (Paystack)
             </Link>
@@ -99,6 +99,7 @@ export default function PaymentMethodPage() {
           <p className="text-xs text-gray-500 mt-3">
             Note: The card checkout handles card details securely via our
             payment provider (Paystack Gateway) — Prettygigs Hub does not store raw card numbers on our servers.
+            Payment are in NGN (Nigerian Naira). To pay using other currencies, please use bank transfer.
           </p>
         </section>
 
