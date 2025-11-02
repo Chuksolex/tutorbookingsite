@@ -88,11 +88,12 @@ export default function PaymentMethodPage() {
           </p>
 
           <div className="mt-4">
-            <Link
+            <Link style={{textDecoration: "none", backgroundColor: "#0c2cbdff",
+            }}
               href="/upgrade/membership"
-              className="inline-block px-5 py-2 bg bg-warning text-white rounded hover:bg-success"
+              className="inline-block px-5 py-3 text-white rounded hover:bg-success "
             >
-              Upgrade with card payment (Paystack)
+              Card payment (Paystack)
             </Link>
           </div>
 
