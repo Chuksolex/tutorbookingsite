@@ -33,7 +33,7 @@ const CountriesPage = () => {
         <title>Ba za Academy Around the World</title>
         <meta
           name="description"
-          content="Discover Baza Academy in different countries around the world and connect with tutors near you."
+          content="Discover Prettygigs Hub in different countries around the world and connect with tutors near you."
         />
       </Head>
 
@@ -42,7 +42,7 @@ const CountriesPage = () => {
           className="mb-4 text-center"
           style={{ color: "#EAB308" }} // gold yellow title
         >
-          Baza Academy Around the World
+          Prettygigs Hub Around the World
         </h1>
         <p
           className="text-center mb-5"

@@ -209,12 +209,12 @@ const CountryPage = () => {
   return (
     <>
       <Head>
-        <title>Learn with Tutors in {formattedCountry} | Baza Academy</title>
+        <title>Learn with Tutors in {formattedCountry} | Prettygigs Hub</title>
         <meta
           name="description"
           content={`Explore top subjects and connect with tutors in ${formattedCountry}. Find lessons in academics, skills, and hobbies.`}
         />
-        <link rel="canonical" href={`https://bazaacademy.com/countries/${country}`} />
+        <link rel="canonical" href={`https://prettygigs..ng/countries/${country}`} />
       </Head>
 
       <div className="container my-5">
