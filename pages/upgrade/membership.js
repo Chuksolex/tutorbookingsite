@@ -154,7 +154,7 @@ export default function UpgradeMembership() {
                 </ul>
 
                 <div className="text-center">
-                  <h2 className="fw-bold mb-3">₦10,750 / month</h2>
+                  <h2 className="fw-bold mb-3">₦4300 / month</h2>
                   <button
                     className="btn btn-warning btn-lg px-5"
                     onClick={handleCheckout}

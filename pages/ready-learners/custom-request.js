@@ -143,7 +143,7 @@ export default function CustomRequestPage() {
 
           {/* Description */}
           <Form.Group className="mb-3">
-            <Form.Label>Set your budget($)/hour</Form.Label>
+            <Form.Label>Set your budget(₦)/hour</Form.Label>
             <Form.Control
               type="number"
               min={3}

@@ -130,7 +130,7 @@ export default function CustomRequests() {
                 <h5 className="card-title">{req.title}</h5>
                 <p className="card-text">Mode of Lesson: {req.modeOfLesson}</p>
                 <p className="card-text">
-                  <strong>Budget</strong>: ${req.budget}/hour
+                  <strong>Budget</strong>: ₦{req.budget}/hour
                 </p>
                 <p className="card-text">
                   <strong>Address</strong>: {req.address}
