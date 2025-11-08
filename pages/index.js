@@ -54,6 +54,58 @@ export default function Home() {
         </p>
 
         {/* Find Tutors and Become Tutor sections ... */}
+        <div className="row g-4">
+          <div className="col-md-6">
+            <div className="card h-100 shadow-sm">
+              <div className="card-body d-flex flex-column">
+                <div className="mb-3 d-flex justify-content-center">
+                  <Image
+                    src="/tutor9.jpg"
+                    alt="Find a Tutor"
+                    width={600}
+                    height={300}
+                    className="rounded object-cover"
+                  />
+                </div>
+                <h2 className="card-title h5">Find a Tutor</h2>
+                <p className="card-text flex-grow-1">
+                  Browse our extensive list of qualified tutors across various
+                  subjects and skills. Whether you need help with academics,
+                  music, or professional skills, we have the right tutor for
+                  you.
+                </p>
+                <Link href="/tutorials" className="btn btn-secondary mt-auto">
+                  Search Tutors
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-6">
+            <div className="card h-100 shadow-sm">
+              <div className="card-body d-flex flex-column">
+                <div className="mb-3 d-flex justify-content-center">
+                  <Image
+                    src="/tutor10.jpg"
+                    alt="Become a Tutor"
+                    width={600}
+                    height={300}
+                    className="rounded object-cover"
+                  />
+                </div>
+                <h2 className="card-title h5">Become a Tutor</h2>
+                <p className="card-text flex-grow-1">
+                  Join our community of passionate educators and start
+                  tutoring students worldwide. Share your expertise, set your
+                  own rates, and make a difference in someone&apos;s learning
+                  journey.
+                </p>
+                <Link href="/auth/signup" className="btn btn-success mt-auto">
+                  Join as Tutor
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
 
       </main>
 
