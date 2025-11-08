@@ -113,32 +113,43 @@ export default function Home() {
       <div className="text-white px-4 py-5 bg bg-secondary mt-6" id="featured-3 mt-4">
         <h2 className="container pb-2 border-bottom">How It Works:</h2>
         <div className="px-5 row g-4 py-5 row-cols-1 row-cols-lg-3">
-          <div className="feature col">
+             <div className="feature col">
             <div className="feature-icon ">
-              <i className="bi bi-megaphone-fill fs-1 text-warning"></i>
+              <i className="bi bi-person fs-1 text-warning"></i>
             </div>
-            <h2>1. State Your Requirement</h2>
+            <h2>1. Create a Profile(Student or Tutor)</h2>
             <p>
-              Tell us about your learning needs and qualified local or online
-              tutors will contact you as the case may be.
+              Depending on what you want to achieve in our platform, create a profile as a
+              student or tutor on the signup page. Afterwards, proceed to update your profile with correct information.
             </p>
           </div>
           <div className="feature col">
             <div className="feature-icon">
               <i className="bi bi-person-lines-fill fs-1 text-warning"></i>
             </div>
-            <h2>2. Review Tutor&apos;s Profile</h2>
+            <h2>2. Studdent? Review Tutor&apos;s Profile</h2>
             <p>
-              Check out the tutors qualifications, read profile, and know when
-              they are available.
+              Check out the available tutors qualifications, read profile, and know when
+              they are available and start a conversation with them.
             </p>
           </div>
+          <div className="feature col">
+            <div className="feature-icon ">
+              <i className="bi bi-question-circle fs-1 text-warning"></i>
+            </div>
+            <h2>3. Didn't Find Right Tutor? State Your Requirement</h2>
+            <p>
+              With your student profile, create a custom learning request. Tell us about your learning needs with your own conditions and qualified local or online
+              tutors will contact you as the case may be.
+            </p>
+          </div>
+          
           <div className="feature col">
             <div className="feature-icon fs-1">
               <i className="bi bi-person-video3 text-warning"></i>
             </div>
-            <h2>3. Agree With Tutor</h2>
-            <p>Agree Times, Fees, Pay membership and start learning!.</p>
+            <h2>4. Get More, Do More, Join Membership</h2>
+            <p>To get more features and benefits, consider joining our membership program. Enjoy exclusive perks, more tutor visibility, ability to create custom student learning requests, and much more!</p>
           </div>
         </div>
       </div>
