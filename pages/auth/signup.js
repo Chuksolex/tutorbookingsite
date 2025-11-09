@@ -26,7 +26,7 @@ export default function SignupPage() {
 
   return (
     <div className="container d-flex align-items-center justify-content-center" style={{ minHeight: "100vh" }}>
-      <form onSubmit={handleSubmit} className="p-4 shadow rounded bg-white w-50">
+      <form onSubmit={handleSubmit} className="p-4 shadow rounded bg-white w-100 w-md-75 w-lg-50" style={{ maxWidth: "400px" }}>
         <h3 className="text-center mb-4" style={{ color: "orange" }}>Register</h3>
 
         <div className="mb-3">

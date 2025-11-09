@@ -33,3 +33,26 @@ body {
 .card:hover {
   transform: translateY(-5px);
 }
+
+
+.offcanvas-sm {
+  width: 60% !important; /* Mobile width */
+
+  a,.nav-link, .btn {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .offcanvas-sm {
+    width: 400px !important; /* Desktop optional width */
+  }
+}
+
+.menuheader {
+  /* background-color: rgb(190, 141, 190); */
+
+  color: #000;
+  font-family: cursive;
+  padding: 5px
+}

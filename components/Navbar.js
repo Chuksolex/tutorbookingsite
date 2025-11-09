@@ -36,15 +36,15 @@ export default function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div className="offcanvas offcanvas-end offcanvas-sm" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
           <div className="offcanvas-header">
-            <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
+            <h3 className="offcanvas-title fw-bold menuheader" id="offcanvasNavbarLabel">
               Prettygigs Hub: Your Learning & Teaching Partner
-            </h5>
+            </h3>
             <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
 
-          <div className="offcanvas-body text-align-center">
+          <div className="offcanvas-body text-align-center ">
             <ul className="navbar-nav justify-content-center flex-grow-1 pe-3 ">
               <li className="nav-item">
                 <Link className="nav-link active mt-2" aria-current="page" href="/">
@@ -138,7 +138,7 @@ export default function Navbar() {
                 />
               </Link>
             ) : (
-              <Link className="ms-3" href="/dashboard">
+              <Link className="ms-3 mt-2" href="/dashboard">
                 <FontAwesomeIcon icon={faDashboard} className="fa-2xl text-warning" />
               </Link>
             )}
