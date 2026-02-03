@@ -20,7 +20,7 @@ export default function Navbar() {
 
         {/* Login button (visible on mobile only when not logged in) */}
         {!session && (
-          <Link href="/login" className="d-none d-sm-inline d-md-none">
+          <Link href="/auth/login" className="d-none d-sm-inline d-md-none">
             <button className="btn btn-warning px-4 text-dark">Login</button>
           </Link>
         )}

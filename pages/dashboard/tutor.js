@@ -264,11 +264,11 @@ export default function TutorDashboard() {
 
             {/* Rate */}
             <div className="mb-3">
-              <label className="form-label fw-semibold">Rate ($/hour)</label>
+              <label className="form-label fw-semibold">Rate (₦/hour)</label>
               <input
                 type="number"
                 className="form-control"
-                value={profile.ratePerHour || 0}
+                value={profile.ratePerHour || 3000}
                 onChange={(e) =>
                   updateField("ratePerHour", Number(e.target.value))
                 }
